@@ -6,4 +6,5 @@ import org.thesis.models.UserRegistrationRequest;
 public interface UserService {
     ResponseEntity<String> registerNewUser(UserRegistrationRequest user);
     ResponseEntity<String> authenticateUser(UserRegistrationRequest user);
+    Boolean validateToken(String token);
 }

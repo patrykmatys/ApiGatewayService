@@ -25,4 +25,17 @@ public class UserServiceImpl implements UserService {
         String url = usersServiceUrl + "/authenticate";
         return restTemplate.postForEntity(url, user, String.class);
     }
+
+    @Override
+    public Boolean validateToken(String token) {
+        String url = usersServiceUrl + "/validate";
+        return restTemplate.postForEntity(url, extractTokenFromHeader(token), Boolean.class).getBody();
+    }
+
+    public String extractTokenFromHeader(String authorizationHeader) {
+        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+            return authorizationHeader.substring(7);
+        }
+        return null;
+    }
 }
