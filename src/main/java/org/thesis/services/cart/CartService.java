@@ -1,14 +1,12 @@
 package org.thesis.services.cart;
 
 import org.springframework.http.ResponseEntity;
-import org.thesis.models.Cart;
 import org.thesis.models.CartRequest;
-
-import java.util.UUID;
+import org.thesis.models.SimpleCart;
 
 public interface CartService {
-    ResponseEntity<Cart> addToCart(CartRequest cartRequest);
-    ResponseEntity<Cart> getCart(String user);
-    ResponseEntity<Cart> removeFromCart(CartRequest cartRequest);
-    ResponseEntity<Cart> emptyCart(String user);
+    ResponseEntity<SimpleCart> addToCart(CartRequest cartRequest);
+    ResponseEntity<SimpleCart> getCart(String user);
+    ResponseEntity<SimpleCart> removeFromCart(CartRequest cartRequest);
+    ResponseEntity<SimpleCart> emptyCart(String user);
 }

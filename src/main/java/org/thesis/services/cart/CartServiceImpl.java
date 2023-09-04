@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.thesis.models.Cart;
 import org.thesis.models.CartRequest;
+import org.thesis.models.SimpleCart;
 
 @Service
 public class CartServiceImpl implements CartService {
@@ -15,27 +15,27 @@ public class CartServiceImpl implements CartService {
     @Autowired
     private String cartServiceUrl;
     @Override
-    public ResponseEntity<Cart> addToCart(CartRequest cartRequest) {
+    public ResponseEntity<SimpleCart> addToCart(CartRequest cartRequest) {
         String url = cartServiceUrl + "/add";
-        return restTemplate.postForEntity(url, cartRequest, Cart.class);
+        return restTemplate.postForEntity(url, cartRequest, SimpleCart.class);
     }
 
     @Override
-    public ResponseEntity<Cart> getCart(String user) {
+    public ResponseEntity<SimpleCart> getCart(String user) {
         String url = cartServiceUrl + "/" + user;
-        return restTemplate.getForEntity(url, Cart.class);
+        return restTemplate.getForEntity(url, SimpleCart.class);
     }
 
     @Override
-    public ResponseEntity<Cart> removeFromCart(CartRequest cartRequest) {
+    public ResponseEntity<SimpleCart> removeFromCart(CartRequest cartRequest) {
         String url = cartServiceUrl + "/remove";
-        return restTemplate.postForEntity(url, cartRequest, Cart.class);
+        return restTemplate.postForEntity(url, cartRequest, SimpleCart.class);
     }
 
     @Override
-    public ResponseEntity<Cart> emptyCart(String user) {
+    public ResponseEntity<SimpleCart> emptyCart(String user) {
         String url = cartServiceUrl + "/remove/" + user;
-        return restTemplate.postForEntity(url, null, Cart.class);
+        return restTemplate.postForEntity(url, null, SimpleCart.class);
     }
 }
 

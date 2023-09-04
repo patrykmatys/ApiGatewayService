@@ -3,11 +3,9 @@ package org.thesis.models;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 @Data
-public class Order {
-    private Cart cart;
-    private Date created;
+public class CartItem {
+    private int amount;
     private BigDecimal price;
 }
