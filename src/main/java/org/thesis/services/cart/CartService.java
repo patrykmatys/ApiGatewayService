@@ -9,4 +9,5 @@ public interface CartService {
     ResponseEntity<SimpleCart> getCart(String user);
     ResponseEntity<SimpleCart> removeFromCart(CartRequest cartRequest);
     ResponseEntity<SimpleCart> emptyCart(String user);
+    ResponseEntity<SimpleCart> updateItemInCart(CartRequest cartRequest);
 }

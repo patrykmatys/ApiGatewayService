@@ -33,6 +33,12 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    public ResponseEntity<SimpleCart> updateItemInCart(CartRequest cartRequest) {
+        String url = cartServiceUrl + "/update";
+        return restTemplate.postForEntity(url, cartRequest, SimpleCart.class);
+    }
+
+    @Override
     public ResponseEntity<SimpleCart> emptyCart(String user) {
         String url = cartServiceUrl + "/remove/" + user;
         return restTemplate.postForEntity(url, null, SimpleCart.class);

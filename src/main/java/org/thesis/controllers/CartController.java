@@ -37,6 +37,16 @@ public class CartController {
         }
     }
 
+    @PostMapping("/update")
+    public ResponseEntity<SimpleCart> updateItemInCart(@RequestBody CartRequest cartRequest,
+                                                     @RequestHeader("Authorization") String token) {
+        if (userService.validateToken(token)) {
+            return cartService.updateItemInCart(cartRequest);
+        } else {
+            return ResponseEntity.status(403).build();
+        }
+    }
+
     @GetMapping("/{user}")
     public ResponseEntity<SimpleCart> getCart(@PathVariable String user,
                                               @RequestHeader("Authorization") String token) {
